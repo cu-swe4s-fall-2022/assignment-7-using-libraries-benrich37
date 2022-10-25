@@ -28,3 +28,6 @@ class TestUtils(unittest.TestCase):
         
     def test_write_matrix_to_file(self):
         # TODO
+        
+if __name__ == '__main__':
+    unittest.main()
