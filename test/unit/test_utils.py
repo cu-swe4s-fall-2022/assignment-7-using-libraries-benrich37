@@ -28,8 +28,8 @@ class TestUtils(unittest.TestCase):
         
     def test_get_random_matrix(self):
         expected_shape = tuple([
-            random.randint(1, cls.ub_matrix_dim),
-            random.randint(1, cls.ub_matrix_dim)
+            random.randint(1, self.ub_matrix_dim),
+            random.randint(1, self.ub_matrix_dim)
         ])
         output_matrix = data_processor.get_random_matrix(
             expected_shape[0],
