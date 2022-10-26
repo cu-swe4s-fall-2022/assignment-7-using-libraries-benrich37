@@ -1,5 +1,7 @@
 import numpy as np
+import pandas as pd
 import sys
+import os
 
 def get_random_matrix(num_rows, num_columns):
     try: 
@@ -13,7 +15,15 @@ def get_random_matrix(num_rows, num_columns):
     return matrix
 
 def get_file_dimensions(file_name):
-	return (0,0)
-
+    try:
+        data = pd.read_csv(file_name)
+    except TypeError:
+        raise TypeError('File name argument must be a string')
+    except FileNotFoundError:
+        raise FileNotFoundError('File ' + file_name +
+                                ' not found in working directory '
+                                + str(os.path.dirname(__file__)))
+    return np.shape(data)
+    
 def write_matrix_to_file(num_rows, num_columns, file_name):
 	return None
