@@ -11,5 +11,6 @@ assert_exit_code 0
 assert_in_stdout 'Found'
 
 # Cleaning
-rm $fname
 rm ssshtest
+cd ../..
+rm $csvfname
