@@ -18,13 +18,13 @@ class TestUtils(unittest.TestCase):
     def setUpClass(cls):
         ub_matrix_dim = 10
         
-    @classmethod
-    def setUp(cls):
-        # TODO
+#     @classmethod
+#     def setUp(cls):
+#         # TODO
         
-    @classmethod
-    def tearDown(cls):
-        # TODO
+#     @classmethod
+#     def tearDown(cls):
+#         # TODO
         
     def test_get_random_matrix(self):
         expected_shape = tuple([
@@ -42,11 +42,11 @@ class TestUtils(unittest.TestCase):
             for j in range(expected_shape[1]):
                 self.assertTrue(bet_0_1(output_matrix[i][j]))
         
-    def test_get_file_dimensions(self):
-        # TODO
+#     def test_get_file_dimensions(self):
+#         # TODO
         
-    def test_write_matrix_to_file(self):
-        # TODO
+#     def test_write_matrix_to_file(self):
+#         # TODO
         
 if __name__ == '__main__':
     unittest.main()
