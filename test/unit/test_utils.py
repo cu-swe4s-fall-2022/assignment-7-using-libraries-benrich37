@@ -71,10 +71,16 @@ class TestUtils(unittest.TestCase):
         self.assertRaises(FileNotFoundError,
                           data_processor.get_file_dimensions,
                           badfname)
-        # TODO
         
-#     def test_write_matrix_to_file(self):
-#         # TODO
+    def test_write_matrix_to_file(self):
+        nparray = data_processor.get_random_matrix(5,5)
+        self.assertRaises(ValueError,
+                          data_processor.write_matrix_to_file,
+                          5,
+                          5,
+                          5
+                         )
+                          
         
 if __name__ == '__main__':
     unittest.main()
