@@ -9,7 +9,8 @@ parser.add_argument('--fname',
 args = parser.parse_args()
 
 if not os.path.exists('../../' + args.fname):
-    raise FileNotFoundError('File ' + args.fname + ' not saved to expected path')
+    raise FileNotFoundError('File ' + args.fname +
+                            ' not saved to expected path')
     sys.exit(1)
 elif not os.stat('../../' + args.fname).st_size > 1:
     raise ValueError('File generated smaller than expected')
