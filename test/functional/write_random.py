@@ -18,4 +18,4 @@ parser.add_argument('--fname',
 args = parser.parse_args()
 
 data_processor.write_matrix_to_file(
-    args.row, args.col, args.fname)
+    args.row, args.col, '../../' + args.fname)
