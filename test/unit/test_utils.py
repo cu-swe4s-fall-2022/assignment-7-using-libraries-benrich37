@@ -17,7 +17,7 @@ class TestUtils(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.ub_matrix_dim = 10
-        cls.test_data_fname = 'iris.data'
+        cls.test_data_fname = '../../iris.data'
         cls.test_data_dim = tuple([149, 5])
         cls.letters = string.ascii_letters + string.punctuation + string.digits
         cls.letters_len = len(cls.letters)
@@ -69,7 +69,8 @@ class TestUtils(unittest.TestCase):
         self.assertEqual(tuple,
                          type(data_processor.get_file_dimensions(self.test_data_fname)))
         self.assertRaises(FileNotFoundError,
-                          data_processor.get_file_dimensions(badfname))
+                          data_processor.get_file_dimensions,
+                          badfname)
         # TODO
         
 #     def test_write_matrix_to_file(self):
