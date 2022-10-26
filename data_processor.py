@@ -26,4 +26,10 @@ def get_file_dimensions(file_name):
     return np.shape(data)
     
 def write_matrix_to_file(num_rows, num_columns, file_name):
-	return None
+    # Expecting get_random_matrix to handle the bad argument stuff
+    matrix = get_random_matrix(num_rows, num_columns)
+    matrix = pd.DataFrame(matrix)
+    try:
+        matrix.to_csv(file_name)
+    except ValueError:
+        raise ValueError('File name must be a string')
