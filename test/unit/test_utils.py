@@ -41,7 +41,25 @@ class TestUtils(unittest.TestCase):
         for i in range(expected_shape[0]):
             for j in range(expected_shape[1]):
                 self.assertTrue(bet_0_1(output_matrix[i][j]))
-        
+                
+        self.assertRaises(TypeError,
+                          data_processor.get_random_matrix(
+                              np.random.rand()*10,
+                              np.random.rand()*10
+                          )
+                         )
+        self.assertRaises(ValueError,
+                          data_processor.get_random_matrix(
+                              np.random.randint(-10, -1),
+                              np.random.randint(-10, -1)
+                          )
+                         )
+        self.assertRaises(ValueError,
+                          data_processor.get_random_matrix(
+                              0, 0
+                          )
+                         )
+                          
 #     def test_get_file_dimensions(self):
 #         # TODO
         
