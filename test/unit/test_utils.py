@@ -16,7 +16,7 @@ def bet_0_1(num):
 class TestUtils(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        ub_matrix_dim = 10
+        cls.ub_matrix_dim = 10
         
 #     @classmethod
 #     def setUp(cls):
