@@ -17,6 +17,12 @@ class TestUtils(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.ub_matrix_dim = 10
+        cls.test_data_fname = 'iris.data'
+        cls.test_data_dim = tuple([149, 5])
+        cls.letters = string.ascii_letters + string.punctuation + string.digits
+        cls.letters_len = len(cls.letters)
+        cls.lb_str_len = 5
+        cls.ub_str_len = 10
         
 #     @classmethod
 #     def setUp(cls):
@@ -53,8 +59,18 @@ class TestUtils(unittest.TestCase):
                           np.random.randint(-10, -1)
                          )
                           
-#     def test_get_file_dimensions(self):
-#         # TODO
+    def test_get_file_dimensions(self):
+        badfname = ''
+        for i in range(np.random.randint(self.lb_str_len, self.ub_str_len)):
+            badfname += self.letters[np.random.randint(0, self.letters_len)]
+        self.assertEqual(self.test_data_dim,
+                        data_processor.get_file_dimensions(self.test_data_fname)
+                        )
+        self.assertEqual(tuple,
+                         type(data_processor.get_file_dimensions(self.test_data_fname)))
+        self.assertRaises(FileNotFoundError,
+                          data_processor.get_file_dimensions(badfname))
+        # TODO
         
 #     def test_write_matrix_to_file(self):
 #         # TODO
