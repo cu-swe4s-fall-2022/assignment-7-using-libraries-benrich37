@@ -1,3 +1,14 @@
+fnames_str=`python return_fnames.py`
+fnames=()
+for fname in $fnames_str
+do
+    fnames+=$fname
+done
+fname1=${fnames[0]}
+fname2=${fnames[1]}
+fname3=${fnames[2]}
+
+
 cd ../..
 test -e ssshtest || wget -q https://raw.githubusercontent.com/ryanlayer/ssshtest/master/ssshtest
 . ssshtest
