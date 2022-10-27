@@ -63,7 +63,7 @@ class TestUtils(unittest.TestCase):
                           badfname)
 
     def test_write_matrix_to_file(self):
-        nparray = data_processor.get_random_matrix(5, 5)
+        nparray = grm(5, 5)
         self.assertRaises(ValueError, wmtf, 5, 5, 5)
 
 
