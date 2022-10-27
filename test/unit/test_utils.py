@@ -43,8 +43,8 @@ class TestUtils(unittest.TestCase):
 
         self.assertRaises(TypeError,
                           grm,
-                          np.random.rand()*10,
-                          np.random.rand()*10)
+                          np.random.rand() * 10,
+                          np.random.rand() * 10)
         self.assertRaises(ValueError,
                           grm,
                           np.random.randint(-10, -1),
