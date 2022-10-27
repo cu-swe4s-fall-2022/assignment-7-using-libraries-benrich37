@@ -23,8 +23,8 @@ def get_file_dimensions(file_name):
         raise TypeError('File name argument must be a string')
     except FileNotFoundError:
         raise FileNotFoundError('File ' + file_name +
-                                ' not found in working directory '
-                                + str(os.path.dirname(__file__)))
+                                ' not found in working directory ' +
+                                str(os.path.dirname(__file__)))
     return np.shape(data)
 
 
