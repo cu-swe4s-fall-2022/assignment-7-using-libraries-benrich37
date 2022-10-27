@@ -15,6 +15,34 @@ column_labels = ['sepal_width', 'sepal_length',
 
 def gen_boxplot(pd_data, plt_cols, ylabel=len_unit, fname=fname1,
                 root=plt, save=True, sub=False):
+
+    """ Generates a boxplot figure with given arguments
+    Perameters:
+    ----------
+    REQUIRED
+             pd_data: Data to plot
+                      ASSUMPTIONS: Must be a pandas.DataFrame object
+                                   Must be given column names
+            plt_cols: Labels of columns to plot
+                      ASSUMPTIONS: Must be a list of strings
+                                   Each string must appear in the
+                                     pd_data column names
+    OPTIONAL
+              ylabel: String to use for y axis label
+                      DEFAULT: length unit type defined in len_unit above
+               fname: String to use to save image to
+                      ASSUMPTIONS: Must have ".png" suffix
+                      DEFAULT: fname1 as defined above
+                root: Matplotlib object where plot will be generated
+                      ASSUMPTIONS: Must be capable of holding a boxplot
+                      DEFAULT: matplotlib.pyplot
+                save: Boolean whether to save the boxplot figure to fname
+                 sub: Boolean whether the root passed is a part of a subplot
+    Returns:
+    --------
+    None
+    """
+
     root.boxplot(pd_data[plt_cols],
                  labels=plt_cols)
     if sub:
@@ -28,6 +56,40 @@ def gen_boxplot(pd_data, plt_cols, ylabel=len_unit, fname=fname1,
 def gen_scatterplot(pd_data, cattype, valtype1, valtype2,
                     len_unit=len_unit, fname=fname2, root=plt,
                     sub=False, save=True):
+
+    """ Generates a scatterplot figure with given arguments
+    Perameters:
+    ----------
+    REQUIRED
+             pd_data: Data to plot
+                      ASSUMPTIONS: Must be a pandas.DataFrame object
+                                   Must be given column names
+             cattype: Label for column header for how to divvy the data
+                      ASSUMPTIONS: Must be a string
+                                   String must appear in the
+                                     pd_data column names
+            valtype1: Label for column header of x values to plot
+                      ASSUMPTIONS: Must be a string
+                                   String must appear in the
+                                     pd_data column names
+            valtype2: Label for column header of y values to plot
+                      ASSUMPTIONS: Must be a string
+                                   String must appear in the
+                                     pd_data column names
+    OPTIONAL
+               fname: String to use to save image to
+                      ASSUMPTIONS: Must have ".png" suffix
+                      DEFAULT: fname1 as defined above
+                root: Matplotlib object where plot will be generated
+                      ASSUMPTIONS: Must be capable of holding a boxplot
+                      DEFAULT: matplotlib.pyplot
+                save: Boolean whether to save the boxplot figure to fname
+                 sub: Boolean whether the root passed is a part of a subplot
+    Returns:
+    --------
+    None
+    """
+
     for s in set(pd_data[cattype]):
         subset = pd_data[pd_data[cattype] == s]
         root.scatter(subset[valtype1], subset[valtype2], label=s)
@@ -47,6 +109,28 @@ def gen_scatterplot(pd_data, cattype, valtype1, valtype2,
 def gen_multiplot(pd_data, box_plt_cols, scat_cattype,
                   scat_valtype1, scat_valtype2,
                   fname=fname3, box_ylabel='cm'):
+
+    """ Generates a scatterplot figure with given arguments
+    Perameters:
+    ----------
+    REQUIRED
+             pd_data: Data to plot
+                      ASSUMPTIONS: Must be a pandas.DataFrame object
+                                   Must be given column names
+        box_plt_cols: Passed as plt_cols in gen_boxplot function
+        scat_cattype: Passed as cattype in gen_scatterplot function
+       scat_valtype1: Passed as valtype1 in gen_scatterplot function
+       scat_valtype2: Passed as valtype2 in gen_scatterplot function
+    OPTIONAL
+               fname: String to use to save image to
+                      ASSUMPTIONS: Must have ".png" suffix
+                      DEFAULT: fname1 as defined above
+          box_ylabel: Passed as ylabel in gen_boxplot function
+    Returns:
+    --------
+    None
+    """
+
     fig, axes = plt.subplots(1, 2)
     fig.set_size_inches(15, 5)
     gen_boxplot(pd_data, box_plt_cols, ylabel=box_ylabel,
